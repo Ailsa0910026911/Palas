@@ -1,0 +1,258 @@
+﻿body {
+    background-color: #00bd00;
+}
+
+legend {
+    font-size: 18px;
+    padding: 3px;
+    margin-bottom: 10px;
+    background-color:#ff8915;
+    width:45%;
+    border-radius:10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.main {
+    background: url('images/bg.jpg') no-repeat;
+    background-size: 100%;
+    border: none;
+}
+
+.top {
+    width: 100%;
+}
+
+    .top .logo {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .top .erweima {
+        width: 10%;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        font-size: 0.5em;
+    }
+
+.toupiao {
+    width: 100%;
+    line-height: 0;
+}
+
+.Content {
+    background-color: #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    border: none;
+    margin-top: -1px;
+}
+
+.infoList {
+    padding: 0 10px;
+    margin: 0;
+    list-style-type: none;
+}
+
+    .infoList li {
+        margin: 0 10px 10px 10px;
+        width: 166px;
+        float: left;
+    }
+
+        .infoList li p {
+            line-height: 8px;
+            margin: 0px;
+        }
+
+.info {
+    background-color: #ededec;
+    width: 100%;
+    padding: 10px 12px;
+    font-weight: 500;
+}
+
+    .info span {
+        color: #ff6a00;
+        font-size: 14px;
+    }
+
+.Ranking {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 28px;
+    overflow: hidden;
+}
+
+.Award {
+    font-size: 18px;
+    color:white;
+}
+
+.Ranking a {
+    color: #ffffff;
+    font-size: 8px;
+}
+
+.Ranking2 {
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    right: 0;
+    left: 25px;
+    overflow: hidden;
+}
+
+    .Ranking2 a {
+        color: #ffffff;
+        font-size: 12px;
+    }
+
+.tail {
+    background-color: #3a3a3a;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+    .tail .tail-img {
+        text-align: center;
+    }
+
+    .tail p {
+        color: #ffffff;
+    }
+
+        .tail p img {
+            margin-left: 5px;
+        }
+
+.Content-left {
+    float: left;
+    width: 28%;
+    min-width: 180px;
+    padding: 0 15px 0 40px;
+    text-align: center;
+}
+
+    .Content-left img {
+        margin-bottom: 15px;
+    }
+
+.Content-right {
+    float: left;
+    width: 71%;
+    padding: 0 40px 0 15px;
+}
+
+.title {
+    width: 100%;
+}
+
+    .title div {
+        float: left;
+        width: 20%;
+        border: 1px solid #d8d8d8;
+        border-right: 0;
+        height: 40px;
+        margin-top: 1px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+        padding-top: 10px;
+    }
+
+        .title div p {
+            margin: 0;
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 20px;
+        }
+
+        .title div span {
+            color: #ff6a00;
+        }
+
+.Comment {
+    margin-top: 20px;
+    border-bottom: solid 1px #d8d8d8;
+    padding-bottom: 15px;
+}
+
+    .Comment p {
+        color: #000000;
+        font-weight: 600;
+        line-height: 1.8;
+    }
+
+    .Comment span {
+        color: #666;
+        font-weight: 400;
+        line-height: 1.8;
+    }
+
+.Brief {
+    margin-top: 20px;
+    border-bottom: solid 1px #d8d8d8;
+    padding-bottom: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.Video {
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.tab {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+    .tab div {
+        border: 1px solid red;
+        float: left;
+    }
+
+.index {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+p {
+    line-height: 1.8;
+    margin: 20px 20px 20px 20px;
+}
+
+.h4 {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .infoList li {
+        width: 100px;
+    }
+
+    .yincang {
+        display: none;
+    }
+
+    .title div {
+        width: 60px;
+    }
+
+    .title img {
+        width: 50%;
+    }
+}

@@ -1,0 +1,97 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="vote.master.cs" Inherits="VoteWeb.vote" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2015上海市最佳阳光体育活力园丁奖、最佳阳光体育达人奖评选及颁奖活动</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="css.css?1" rel="stylesheet" />
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <style type="text/css">
+        #imgbig {
+            text-align: center;
+            padding-left: -20px;
+            visibility: visible;
+        }
+    </style>
+    <script language="JavaScript" type="text/JavaScript">
+        $(document).ready(function () {
+
+            $("a[rel=example_group]").fancybox({
+                'transitionIn': 'none',
+                'transitionOut': 'none',
+                'titlePosition': 'over',
+                'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                    return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+                }
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<div class="main">
+    <div style="width:100%; position:absolute;top:0px">
+        <div style="width:40%;position:absolute;top:0px;left:19%;z-index:1;cursor:pointer;">
+            <img style="width:100%;" src="/images/tt.png"/>
+        </div>
+        <div style="width:40%;position:absolute;top:0px;left:19%;z-index:1">
+            <a href="#"><div style="width:33.33%;float:left;text-align:center;min-height:90px;max-height:90px;" onclick="location.href='/index.html'"></div></a>
+            <a href="#"><div style="width:33.33%;float:left;text-align:center;min-height:90px;max-height:90px;" onclick="location.href='/activity.html'"></div></a>
+           <a href="#"> <div style="width:33.33%;float:left;text-align:center;min-height:90px;max-height:90px;" onclick="location.href='/rules.html'"></div></a>
+        </div>
+    </div>
+        <div style="clear: left;"></div>
+        <div class="container-fluid" style="padding: 0; width: 90%;">
+            <div class="top" style="position: relative;">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img src="/images/logo.png" style="width: 100%" />
+                    </a>
+                </div>
+                <div class="erweima">
+                    <a rel="example_group" href="/images/51d6737f739dc952f83a8f8da87fd619.png" title="">
+                    <img src="/images/51d6737f739dc952f83a8f8da87fd619.png" style="width: 100%;" /></a>
+                </div>
+            </div>
+            <div class="toupiao">
+                <img src="/images/title.png" style="width: 100%;" />
+            </div>
+            <div>
+                <form runat="server" id="form1">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tail">
+        <div>
+            <div class="tail-img">
+                <a rel="example_group" href="/images/51d6737f739dc952f83a8f8da87fd619.png" title="">
+                    <img src="/images/51d6737f739dc952f83a8f8da87fd619.png" style="width: 150px;" /></a>
+                <p>扫描二维码关注本网站</p>
+            </div>
+            <p style="margin: 0;">主办：上海市大学生体育协会，上海市中学生体育协会</p>
+            <p style="margin: 0;">承办：上海体育学院</p>
+        </div>
+    </div>
+    <div style="display: none">
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?33211b1c2614f13393ddd3abde21e863";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+</script>
+    </div>
+</body>
+</html>
