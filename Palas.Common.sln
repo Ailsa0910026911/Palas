@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palas.Common", "Palas.Common\Palas.Common.csproj", "{415CAB8F-46BF-4FBA-8E37-307198126E33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palas.Common.Lib", "Palas.Common.Lib\Palas.Common.Lib.csproj", "{E3B46A09-01AA-497E-A84B-3FB87FE33B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palas.Common.Test", "Palas.Common.Test\Palas.Common.Test.csproj", "{981E62C9-B8FA-4CC5-AA60-96E097298794}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F953AB1-5752-433B-995E-47E111D65FE7}"
+	ProjectSection(SolutionItems) = preProject
+		Palas.Common.Local.testsettings = Palas.Common.Local.testsettings
+		Palas.Common.TraceAndTestImpact.testsettings = Palas.Common.TraceAndTestImpact.testsettings
+		Palas.Common.vsmdi = Palas.Common.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tomdaddy:8080/tfs/palas
+		SccLocalPath0 = Palas.Common
+		SccProjectFilePathRelativizedFromConnection0 = ..\\
+		SccProjectUniqueName1 = Palas.Common\\Palas.Common.csproj
+		SccLocalPath1 = Palas.Common
+		SccProjectUniqueName2 = Palas.Common.Lib\\Palas.Common.Lib.csproj
+		SccProjectName2 = Palas.Common.Lib
+		SccLocalPath2 = Palas.Common.Lib
+		SccProjectUniqueName3 = Palas.Common.Test\\Palas.Common.Test.csproj
+		SccProjectName3 = Palas.Common.Test
+		SccLocalPath3 = Palas.Common.Test
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Palas.Common.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{415CAB8F-46BF-4FBA-8E37-307198126E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415CAB8F-46BF-4FBA-8E37-307198126E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415CAB8F-46BF-4FBA-8E37-307198126E33}.Release|Any CPU.ActiveCfg = Release|x64
+		{415CAB8F-46BF-4FBA-8E37-307198126E33}.Release|Any CPU.Build.0 = Release|x64
+		{E3B46A09-01AA-497E-A84B-3FB87FE33B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3B46A09-01AA-497E-A84B-3FB87FE33B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3B46A09-01AA-497E-A84B-3FB87FE33B79}.Release|Any CPU.ActiveCfg = Release|x64
+		{E3B46A09-01AA-497E-A84B-3FB87FE33B79}.Release|Any CPU.Build.0 = Release|x64
+		{981E62C9-B8FA-4CC5-AA60-96E097298794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981E62C9-B8FA-4CC5-AA60-96E097298794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981E62C9-B8FA-4CC5-AA60-96E097298794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
