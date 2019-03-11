@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MaterialModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MaterialModelStoreContainer">
+          <EntitySet Name="ArticleAnalyze" EntityType="MaterialModel.Store.ArticleAnalyze" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="ArticleAnalyzeCategory" EntityType="MaterialModel.Store.ArticleAnalyzeCategory" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="Category" EntityType="MaterialModel.Store.Category" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="LanguageMaterial" EntityType="MaterialModel.Store.LanguageMaterial" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="Stat" EntityType="MaterialModel.Store.Stat" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="UserFile" EntityType="MaterialModel.Store.UserFile" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="UserInfo" EntityType="MaterialModel.Store.UserInfo" store:Type="Tables" Schema="Material" />
+          <EntitySet Name="UserTask" EntityType="MaterialModel.Store.UserTask" store:Type="Tables" Schema="Material" />
+          <AssociationSet Name="FK_ArticleAnalyze" Association="MaterialModel.Store.FK_ArticleAnalyze">
+            <End Role="LanguageMaterial" EntitySet="LanguageMaterial" />
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAnalyze_UserID" Association="MaterialModel.Store.FK_ArticleAnalyze_UserID">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtricleAnalyzeCategory" Association="MaterialModel.Store.FK_AtricleAnalyzeCategory">
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+            <End Role="ArticleAnalyzeCategory" EntitySet="ArticleAnalyzeCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtricleAnalyzeCategoryID" Association="MaterialModel.Store.FK_AtricleAnalyzeCategoryID">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ArticleAnalyzeCategory" EntitySet="ArticleAnalyzeCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stat_fileid" Association="MaterialModel.Store.FK_stat_fileid">
+            <End Role="UserFile" EntitySet="UserFile" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserID" Association="MaterialModel.Store.FK_UserInfo_UserID">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserFile" EntitySet="UserFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTask" Association="MaterialModel.Store.FK_UserTask">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserTask" EntitySet="UserTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTask_ArticleID" Association="MaterialModel.Store.FK_UserTask_ArticleID">
+            <End Role="LanguageMaterial" EntitySet="LanguageMaterial" />
+            <End Role="UserTask" EntitySet="UserTask" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ArticleAnalyze">
+          <Key>
+            <PropertyRef Name="ArticleAnalyzeID" />
+          </Key>
+          <Property Name="ArticleAnalyzeID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="ArticleID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="EmotionHappy" Type="int" Nullable="false" />
+          <Property Name="EmotionAccept" Type="int" Nullable="false" />
+          <Property Name="EmotionSurprise" Type="int" Nullable="false" />
+          <Property Name="EmotionFear" Type="int" Nullable="false" />
+          <Property Name="EmotionSad" Type="int" Nullable="false" />
+          <Property Name="EmotionHate" Type="int" Nullable="false" />
+          <Property Name="EmotionExpect" Type="int" Nullable="false" />
+          <Property Name="EmotionAngry" Type="int" Nullable="false" />
+          <Property Name="Sentiment" Type="int" Nullable="false" />
+          <Property Name="KnowledgePositive" Type="int" Nullable="false" />
+          <Property Name="KnowledgeNegative" Type="int" Nullable="false" />
+          <Property Name="ActionPositive" Type="int" Nullable="false" />
+          <Property Name="ActionNegative" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Author" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorRelated" Type="varchar" MaxLength="50" />
+          <Property Name="LanguageType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ArticleAnalyzeCategory">
+          <Key>
+            <PropertyRef Name="ArticleAnalyzeID" />
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="ArticleAnalyzeID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="CategoryID" Type="char" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CategoryType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LanguageMaterial">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="Content" Type="text" />
+          <Property Name="ArticleType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stat">
+          <Key>
+            <PropertyRef Name="StatID" />
+          </Key>
+          <Property Name="StatID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="FileID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="SamplingNum" Type="int" Nullable="false" />
+          <Property Name="PassNum" Type="int" Nullable="false" />
+          <Property Name="FailureNum" Type="int" Nullable="false" />
+          <Property Name="IsPass" Type="bit" Nullable="false" />
+          <Property Name="SubmitNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="UserID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="RowNumber" Type="int" Nullable="false" />
+          <Property Name="UpdateNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="RealName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="100" />
+          <Property Name="TaskType" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UserTask">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ArticleID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="UserID" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsIgnore" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ArticleAnalyze">
+          <End Role="LanguageMaterial" Type="MaterialModel.Store.LanguageMaterial" Multiplicity="1" />
+          <End Role="ArticleAnalyze" Type="MaterialModel.Store.ArticleAnalyze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMaterial">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyze">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAnalyze_UserID">
+          <End Role="UserInfo" Type="MaterialModel.Store.UserInfo" Multiplicity="1" />
+          <End Role="ArticleAnalyze" Type="MaterialModel.Store.ArticleAnalyze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyze">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtricleAnalyzeCategory">
+          <End Role="ArticleAnalyze" Type="MaterialModel.Store.ArticleAnalyze" Multiplicity="1" />
+          <End Role="ArticleAnalyzeCategory" Type="MaterialModel.Store.ArticleAnalyzeCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleAnalyze">
+              <PropertyRef Name="ArticleAnalyzeID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyzeCategory">
+              <PropertyRef Name="ArticleAnalyzeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtricleAnalyzeCategoryID">
+          <End Role="Category" Type="MaterialModel.Store.Category" Multiplicity="1" />
+          <End Role="ArticleAnalyzeCategory" Type="MaterialModel.Store.ArticleAnalyzeCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyzeCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stat_fileid">
+          <End Role="UserFile" Type="MaterialModel.Store.UserFile" Multiplicity="1" />
+          <End Role="Stat" Type="MaterialModel.Store.Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserID">
+          <End Role="UserInfo" Type="MaterialModel.Store.UserInfo" Multiplicity="1" />
+          <End Role="UserFile" Type="MaterialModel.Store.UserFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTask">
+          <End Role="UserInfo" Type="MaterialModel.Store.UserInfo" Multiplicity="1" />
+          <End Role="UserTask" Type="MaterialModel.Store.UserTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserTask">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTask_ArticleID">
+          <End Role="LanguageMaterial" Type="MaterialModel.Store.LanguageMaterial" Multiplicity="1" />
+          <End Role="UserTask" Type="MaterialModel.Store.UserTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMaterial">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="UserTask">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MaterialModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MaterialDB" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="ArticleAnalyze" EntityType="MaterialModel.ArticleAnalyze" />
+          <EntitySet Name="Category" EntityType="MaterialModel.Category" />
+          <EntitySet Name="LanguageMaterial" EntityType="MaterialModel.LanguageMaterial" />
+          <EntitySet Name="Stat" EntityType="MaterialModel.Stat" />
+          <EntitySet Name="UserFile" EntityType="MaterialModel.UserFile" />
+          <EntitySet Name="UserInfo" EntityType="MaterialModel.UserInfo" />
+          <EntitySet Name="UserTask" EntityType="MaterialModel.UserTask" />
+          <AssociationSet Name="FK_ArticleAnalyze" Association="MaterialModel.FK_ArticleAnalyze">
+            <End Role="LanguageMaterial" EntitySet="LanguageMaterial" />
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAnalyze_UserID" Association="MaterialModel.FK_ArticleAnalyze_UserID">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTask_ArticleID" Association="MaterialModel.FK_UserTask_ArticleID">
+            <End Role="LanguageMaterial" EntitySet="LanguageMaterial" />
+            <End Role="UserTask" EntitySet="UserTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stat_fileid" Association="MaterialModel.FK_stat_fileid">
+            <End Role="UserFile" EntitySet="UserFile" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserID" Association="MaterialModel.FK_UserInfo_UserID">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserFile" EntitySet="UserFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTask" Association="MaterialModel.FK_UserTask">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserTask" EntitySet="UserTask" />
+          </AssociationSet>
+          <AssociationSet Name="ArticleAnalyzeCategory" Association="MaterialModel.ArticleAnalyzeCategory">
+            <End Role="ArticleAnalyze" EntitySet="ArticleAnalyze" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ArticleAnalyze">
+          <Key>
+            <PropertyRef Name="ArticleAnalyzeID" />
+          </Key>
+          <Property Type="String" Name="ArticleAnalyzeID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ArticleID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EmotionHappy" Nullable="false" />
+          <Property Type="Int32" Name="EmotionAccept" Nullable="false" />
+          <Property Type="Int32" Name="EmotionSurprise" Nullable="false" />
+          <Property Type="Int32" Name="EmotionFear" Nullable="false" />
+          <Property Type="Int32" Name="EmotionSad" Nullable="false" />
+          <Property Type="Int32" Name="EmotionHate" Nullable="false" />
+          <Property Type="Int32" Name="EmotionExpect" Nullable="false" />
+          <Property Type="Int32" Name="EmotionAngry" Nullable="false" />
+          <Property Type="Int32" Name="Sentiment" Nullable="false" />
+          <Property Type="Int32" Name="KnowledgePositive" Nullable="false" />
+          <Property Type="Int32" Name="KnowledgeNegative" Nullable="false" />
+          <Property Type="Int32" Name="ActionPositive" Nullable="false" />
+          <Property Type="Int32" Name="ActionNegative" Nullable="false" />
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="Author" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AuthorRelated" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LanguageType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LanguageMaterial" Relationship="MaterialModel.FK_ArticleAnalyze" FromRole="ArticleAnalyze" ToRole="LanguageMaterial" />
+          <NavigationProperty Name="UserInfo" Relationship="MaterialModel.FK_ArticleAnalyze_UserID" FromRole="ArticleAnalyze" ToRole="UserInfo" />
+          <NavigationProperty Name="Category" Relationship="MaterialModel.ArticleAnalyzeCategory" FromRole="ArticleAnalyze" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Type="String" Name="CategoryID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CategoryType" Nullable="false" />
+          <NavigationProperty Name="ArticleAnalyze" Relationship="MaterialModel.ArticleAnalyzeCategory" FromRole="Category" ToRole="ArticleAnalyze" />
+        </EntityType>
+        <EntityType Name="LanguageMaterial">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Type="String" Name="ArticleID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Content" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ArticleType" Nullable="false" />
+          <NavigationProperty Name="ArticleAnalyze" Relationship="MaterialModel.FK_ArticleAnalyze" FromRole="LanguageMaterial" ToRole="ArticleAnalyze" />
+          <NavigationProperty Name="UserTask" Relationship="MaterialModel.FK_UserTask_ArticleID" FromRole="LanguageMaterial" ToRole="UserTask" />
+        </EntityType>
+        <EntityType Name="Stat">
+          <Key>
+            <PropertyRef Name="StatID" />
+          </Key>
+          <Property Type="String" Name="StatID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="FileID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Remark" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SamplingNum" Nullable="false" />
+          <Property Type="Int32" Name="PassNum" Nullable="false" />
+          <Property Type="Int32" Name="FailureNum" Nullable="false" />
+          <Property Type="Boolean" Name="IsPass" Nullable="false" />
+          <Property Type="Int32" Name="SubmitNum" Nullable="false" />
+          <NavigationProperty Name="UserFile" Relationship="MaterialModel.FK_stat_fileid" FromRole="Stat" ToRole="UserFile" />
+        </EntityType>
+        <EntityType Name="UserFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Type="String" Name="FileID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Int32" Name="RowNumber" Nullable="false" />
+          <Property Type="Int32" Name="UpdateNum" Nullable="false" />
+          <NavigationProperty Name="Stat" Relationship="MaterialModel.FK_stat_fileid" FromRole="UserFile" ToRole="Stat" />
+          <NavigationProperty Name="UserInfo" Relationship="MaterialModel.FK_UserInfo_UserID" FromRole="UserFile" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CellPhone" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TaskType" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArticleAnalyze" Relationship="MaterialModel.FK_ArticleAnalyze_UserID" FromRole="UserInfo" ToRole="ArticleAnalyze" />
+          <NavigationProperty Name="UserFile" Relationship="MaterialModel.FK_UserInfo_UserID" FromRole="UserInfo" ToRole="UserFile" />
+          <NavigationProperty Name="UserTask" Relationship="MaterialModel.FK_UserTask" FromRole="UserInfo" ToRole="UserTask" />
+        </EntityType>
+        <EntityType Name="UserTask">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="String" Name="ArticleID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsIgnore" Nullable="false" />
+          <NavigationProperty Name="LanguageMaterial" Relationship="MaterialModel.FK_UserTask_ArticleID" FromRole="UserTask" ToRole="LanguageMaterial" />
+          <NavigationProperty Name="UserInfo" Relationship="MaterialModel.FK_UserTask" FromRole="UserTask" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="FK_ArticleAnalyze">
+          <End Type="MaterialModel.LanguageMaterial" Role="LanguageMaterial" Multiplicity="1" />
+          <End Type="MaterialModel.ArticleAnalyze" Role="ArticleAnalyze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMaterial">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyze">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAnalyze_UserID">
+          <End Type="MaterialModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="MaterialModel.ArticleAnalyze" Role="ArticleAnalyze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ArticleAnalyze">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTask_ArticleID">
+          <End Type="MaterialModel.LanguageMaterial" Role="LanguageMaterial" Multiplicity="1" />
+          <End Type="MaterialModel.UserTask" Role="UserTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMaterial">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="UserTask">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stat_fileid">
+          <End Type="MaterialModel.UserFile" Role="UserFile" Multiplicity="1" />
+          <End Type="MaterialModel.Stat" Role="Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserID">
+          <End Type="MaterialModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="MaterialModel.UserFile" Role="UserFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTask">
+          <End Type="MaterialModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="MaterialModel.UserTask" Role="UserTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserTask">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ArticleAnalyzeCategory">
+          <End Type="MaterialModel.ArticleAnalyze" Role="ArticleAnalyze" Multiplicity="*" />
+          <End Type="MaterialModel.Category" Role="Category" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MaterialModelStoreContainer" CdmEntityContainer="MaterialDB">
+          <EntitySetMapping Name="ArticleAnalyze">
+            <EntityTypeMapping TypeName="MaterialModel.ArticleAnalyze">
+              <MappingFragment StoreEntitySet="ArticleAnalyze">
+                <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+                <ScalarProperty Name="AuthorRelated" ColumnName="AuthorRelated" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ActionNegative" ColumnName="ActionNegative" />
+                <ScalarProperty Name="ActionPositive" ColumnName="ActionPositive" />
+                <ScalarProperty Name="KnowledgeNegative" ColumnName="KnowledgeNegative" />
+                <ScalarProperty Name="KnowledgePositive" ColumnName="KnowledgePositive" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+                <ScalarProperty Name="EmotionAngry" ColumnName="EmotionAngry" />
+                <ScalarProperty Name="EmotionExpect" ColumnName="EmotionExpect" />
+                <ScalarProperty Name="EmotionHate" ColumnName="EmotionHate" />
+                <ScalarProperty Name="EmotionSad" ColumnName="EmotionSad" />
+                <ScalarProperty Name="EmotionFear" ColumnName="EmotionFear" />
+                <ScalarProperty Name="EmotionSurprise" ColumnName="EmotionSurprise" />
+                <ScalarProperty Name="EmotionAccept" ColumnName="EmotionAccept" />
+                <ScalarProperty Name="EmotionHappy" ColumnName="EmotionHappy" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="ArticleAnalyzeID" ColumnName="ArticleAnalyzeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="MaterialModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LanguageMaterial">
+            <EntityTypeMapping TypeName="MaterialModel.LanguageMaterial">
+              <MappingFragment StoreEntitySet="LanguageMaterial">
+                <ScalarProperty Name="ArticleType" ColumnName="ArticleType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stat">
+            <EntityTypeMapping TypeName="MaterialModel.Stat">
+              <MappingFragment StoreEntitySet="Stat">
+                <ScalarProperty Name="SubmitNum" ColumnName="SubmitNum" />
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="FailureNum" ColumnName="FailureNum" />
+                <ScalarProperty Name="PassNum" ColumnName="PassNum" />
+                <ScalarProperty Name="SamplingNum" ColumnName="SamplingNum" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="StatID" ColumnName="StatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFile">
+            <EntityTypeMapping TypeName="MaterialModel.UserFile">
+              <MappingFragment StoreEntitySet="UserFile">
+                <ScalarProperty Name="UpdateNum" ColumnName="UpdateNum" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="MaterialModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTask">
+            <EntityTypeMapping TypeName="MaterialModel.UserTask">
+              <MappingFragment StoreEntitySet="UserTask">
+                <ScalarProperty Name="IsIgnore" ColumnName="IsIgnore" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ArticleAnalyzeCategory" TypeName="MaterialModel.ArticleAnalyzeCategory" StoreEntitySet="ArticleAnalyzeCategory">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+            <EndProperty Name="ArticleAnalyze">
+              <ScalarProperty Name="ArticleAnalyzeID" ColumnName="ArticleAnalyzeID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Material">
+        <EntityTypeShape EntityType="MaterialModel.ArticleAnalyze" Width="1.5" PointX="1.2983204076524453" PointY="28.849260656558563" />
+        <EntityTypeShape EntityType="MaterialModel.Category" Width="1.5" PointX="2.3840944480076871" PointY="18.311407231870763" />
+        <EntityTypeShape EntityType="MaterialModel.LanguageMaterial" Width="1.5" PointX="3.3576094356168102" PointY="26.094115522733944" />
+        <EntityTypeShape EntityType="MaterialModel.Stat" Width="1.5" PointX="10.46994545612016" PointY="27.001313400921092" />
+        <EntityTypeShape EntityType="MaterialModel.UserFile" Width="1.5" PointX="1.2306864453622544" PointY="7.86737694212579" />
+        <EntityTypeShape EntityType="MaterialModel.UserInfo" Width="1.5" PointX="7.5107378696607139" PointY="15.38991297008" />
+        <EntityTypeShape EntityType="MaterialModel.UserTask" Width="1.5" PointX="6.9991763825524487" PointY="13.103285065434541" />
+        <AssociationConnector Association="MaterialModel.FK_ArticleAnalyze" />
+        <AssociationConnector Association="MaterialModel.FK_ArticleAnalyze_UserID" />
+        <AssociationConnector Association="MaterialModel.FK_UserTask_ArticleID" />
+        <AssociationConnector Association="MaterialModel.FK_stat_fileid" />
+        <AssociationConnector Association="MaterialModel.FK_UserInfo_UserID" />
+        <AssociationConnector Association="MaterialModel.FK_UserTask" />
+        <AssociationConnector Association="MaterialModel.ArticleAnalyzeCategory" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
